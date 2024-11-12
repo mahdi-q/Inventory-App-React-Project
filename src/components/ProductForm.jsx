@@ -1,5 +1,7 @@
 import { useState } from "react";
 import SelectCategory from "./SelectCategory";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
 
 function ProductForm({ categories }) {
   const [isShown, setIsShown] = useState(false);
@@ -47,12 +49,11 @@ function ProductForm({ categories }) {
 
   return (
     <div className="mb-6">
-      <button
-        className={`${isShown && "hidden"} text-slate-500 font-bold text-lg`}
+      <Button
         onClick={() => setIsShown(true)}
-      >
-        Add New Product ?
-      </button>
+        style={`${isShown && "hidden"} btn--text`}
+        text="Add New Product ?"
+      />
 
       <div className={`${isShown || "hidden"}`}>
         <h2 className="text-slate-300 font-bold text-xl mb-3">
@@ -60,39 +61,22 @@ function ProductForm({ categories }) {
         </h2>
 
         <form className="flex flex-col bg-slate-700 rounded-xl p-4 gap-y-4">
-          <div>
-            <label
-              htmlFor="product-title"
-              className="text-slate-300 block mb-1"
-            >
-              Title
-            </label>
-            <input
-              type="text"
-              id="product-title"
-              className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1 focus:bg-transparent"
-              name="title"
-              value={productFormData.title}
-              onChange={changeHandler}
-            />
-          </div>
+          <Input
+            label="Title"
+            id="product-title"
+            name="title"
+            value={productFormData.title}
+            onChange={changeHandler}
+          />
 
-          <div>
-            <label
-              htmlFor="product-quantity"
-              className="text-slate-300 block mb-1"
-            >
-              Quantity
-            </label>
-            <input
-              type="number"
-              id="product-quantity"
-              className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1"
-              name="quantity"
-              value={productFormData.quantity}
-              onChange={changeHandler}
-            />
-          </div>
+          <Input
+            label="Quantity"
+            id="product-quantity"
+            name="quantity"
+            value={productFormData.quantity}
+            onChange={changeHandler}
+            type="number"
+          />
 
           <SelectCategory
             categories={categories}
@@ -101,19 +85,17 @@ function ProductForm({ categories }) {
           />
 
           <div className="flex items-center justify-between gap-x-4">
-            <button
+            <Button
               onClick={cancelHandler}
-              className="flex-1 text-slate-300 border border-slate-400 rounded-xl py-2"
-            >
-              Cancel
-            </button>
+              text="Cancel"
+              style="btn--secondary"
+            />
 
-            <button
+            <Button
               onClick={addNewProductHandler}
-              className="flex-1 text-slate-200 bg-slate-500 border border-slate-500 rounded-xl py-2"
-            >
-              Add Product
-            </button>
+              style="btn--primary"
+              text="Add Product"
+            />
           </div>
         </form>
       </div>
