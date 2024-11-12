@@ -1,33 +1,49 @@
 import { useState } from "react";
+import SelectCategory from "./SelectCategory";
 
-function CategoryForm({ setCategories }) {
+function ProductForm({ categories }) {
   const [isShown, setIsShown] = useState(false);
-  const [categoryFormData, setCategoryFormData] = useState({
+  const [productFormData, setProductFormData] = useState({
     title: "",
-    description: "",
+    quantity: 0,
+    category: "",
   });
+  const [products, setProducts] = useState([]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
 
-    setCategoryFormData({ ...categoryFormData, [name]: value });
+    setProductFormData({ ...productFormData, [name]: value });
   };
 
-  const addNewCategoryHandler = (e) => {
+  const cancelHandler = (e) => {
+    e.preventDefault();
+    setIsShown(false);
+    setProductFormData({
+      title: "",
+      quantity: 0,
+      category: "",
+    });
+  };
+
+  const addNewProductHandler = (e) => {
     e.preventDefault();
 
-    const newCategory = {
-      ...categoryFormData,
+    const newProduct = {
+      ...productFormData,
       createdAt: new Date().toISOString(),
       id: new Date().getTime(),
     };
 
-    setCategories((prevState) => [...prevState, newCategory]);
-    setCategoryFormData({
+    setProducts((prevState) => [...prevState, newProduct]);
+    setProductFormData({
       title: "",
-      description: "",
+      quantity: 0,
+      category: "",
     });
   };
+
+  console.log(products);
 
   return (
     <div className="mb-6">
@@ -35,64 +51,68 @@ function CategoryForm({ setCategories }) {
         className={`${isShown && "hidden"} text-slate-500 font-bold text-lg`}
         onClick={() => setIsShown(true)}
       >
-        Add New Category ?
+        Add New Product ?
       </button>
 
       <div className={`${isShown || "hidden"}`}>
         <h2 className="text-slate-300 font-bold text-xl mb-3">
-          Add New Category
+          Add New Product
         </h2>
 
         <form className="flex flex-col bg-slate-700 rounded-xl p-4 gap-y-4">
           <div>
             <label
-              htmlFor="category-title"
+              htmlFor="product-title"
               className="text-slate-300 block mb-1"
             >
               Title
             </label>
             <input
               type="text"
-              id="category-title"
-              className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1"
+              id="product-title"
+              className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1 focus:bg-transparent"
               name="title"
+              value={productFormData.title}
               onChange={changeHandler}
-              value={categoryFormData.title}
             />
           </div>
 
           <div>
             <label
-              htmlFor="category-description"
+              htmlFor="product-quantity"
               className="text-slate-300 block mb-1"
             >
-              Description
+              Quantity
             </label>
-            <textarea
-              id="category-description"
-              className="bg-transparent border border-slate-500 text-slate-400 rounded-xl w-full py-1"
-              name="description"
+            <input
+              type="number"
+              id="product-quantity"
+              className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1"
+              name="quantity"
+              value={productFormData.quantity}
               onChange={changeHandler}
-              value={categoryFormData.description}
-            ></textarea>
+            />
           </div>
+
+          <SelectCategory
+            categories={categories}
+            productFormData={productFormData}
+            setProductFormData={setProductFormData}
+          />
 
           <div className="flex items-center justify-between gap-x-4">
             <button
+              onClick={cancelHandler}
               className="flex-1 text-slate-300 border border-slate-400 rounded-xl py-2"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsShown(false);
-              }}
             >
               Cancel
             </button>
 
             <button
-              onClick={addNewCategoryHandler}
+              onClick={addNewProductHandler}
               className="flex-1 text-slate-200 bg-slate-500 border border-slate-500 rounded-xl py-2"
             >
-              Add Category
+              Add Product
             </button>
           </div>
         </form>
@@ -100,4 +120,4 @@ function CategoryForm({ setCategories }) {
     </div>
   );
 }
-export default CategoryForm;
+export default ProductForm;
