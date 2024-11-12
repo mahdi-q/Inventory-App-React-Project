@@ -89,6 +89,10 @@ function CategoryForm({ setCategories }) {
               onClick={addNewCategoryHandler}
               style="btn--primary"
               text="Add Category"
+              disabled={
+                categoryFormData.title === "" ||
+                categoryFormData.description === ""
+              }
             />
           </div>
         </form>

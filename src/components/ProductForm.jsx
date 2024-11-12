@@ -95,6 +95,11 @@ function ProductForm({ categories }) {
               onClick={addNewProductHandler}
               style="btn--primary"
               text="Add Product"
+              disabled={
+                productFormData.title === "" ||
+                productFormData.quantity <= 0 ||
+                productFormData.category === ""
+              }
             />
           </div>
         </form>
