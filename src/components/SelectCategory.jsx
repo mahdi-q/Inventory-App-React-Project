@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FaEdit } from "react-icons/fa";
+import { HiOutlineChevronDown } from "react-icons/hi";
 
 function SelectCategory({ categories, productFormData, setProductFormData }) {
   const [isShown, setIsShown] = useState(false);
@@ -26,12 +28,12 @@ function SelectCategory({ categories, productFormData, setProductFormData }) {
           }}
           className="w-full px-3 py-[6px] border border-slate-500 bg-transparent text-slate-400 rounded-xl focus:ring-1 focus:ring-blue-600 focus:border-blue-600 focus:ring-offset-0 flex items-center justify-between z-10 relative"
         >
-          <div id="selected-category">
+          <div>
             {productFormData.category
               ? categories.find((c) => c.id === productFormData.category).title
               : "select a category ..."}
           </div>
-          {/* chevron down icon */}
+          <HiOutlineChevronDown className="w-5 h-5" />
         </button>
 
         <button
@@ -51,10 +53,12 @@ function SelectCategory({ categories, productFormData, setProductFormData }) {
             <div
               key={category.id}
               onClick={(e) => changeCategoryHandler(e, category)}
-              className="category-option text-white px-4 py-1 hover:bg-blue-600 flex items-center justify-between"
+              className="text-white px-4 py-1 hover:bg-blue-600 flex items-center justify-between"
             >
               <span>{category.title}</span>
-              <button className="edit-category-btn">{/* edit icon */}</button>
+              <button>
+                <FaEdit className="w-4 h-4 text-green-500" />
+              </button>
             </div>
           ))}
         </div>
