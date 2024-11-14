@@ -6,6 +6,7 @@ import ProductsList from "./components/ProductsList";
 
 function App() {
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   return (
     <div className="bg-slate-800 max-h-fit min-h-screen">
@@ -17,9 +18,9 @@ function App() {
         <div className="container max-w-lg mx-auto relative">
           <CategoryForm setCategories={setCategories} />
 
-          <ProductForm categories={categories} />
+          <ProductForm categories={categories} setProducts={setProducts} />
 
-          <ProductsList categories={categories} />
+          <ProductsList categories={categories} products={products} />
         </div>
       </div>
     </div>

@@ -3,14 +3,13 @@ import SelectCategory from "./SelectCategory";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
-function ProductForm({ categories }) {
+function ProductForm({ categories, setProducts }) {
   const [isShown, setIsShown] = useState(false);
   const [productFormData, setProductFormData] = useState({
     title: "",
     quantity: 0,
     category: "",
   });
-  const [products, setProducts] = useState([]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -44,8 +43,6 @@ function ProductForm({ categories }) {
       category: "",
     });
   };
-
-  console.log(products);
 
   return (
     <div className="mb-6">
