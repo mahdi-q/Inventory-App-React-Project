@@ -2,6 +2,7 @@ import { useState } from "react";
 import CategoryForm from "./components/CategoryForm";
 import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
+import ProductsList from "./components/ProductsList";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -15,7 +16,10 @@ function App() {
         {/* App Content */}
         <div className="container max-w-lg mx-auto relative">
           <CategoryForm setCategories={setCategories} />
+
           <ProductForm categories={categories} />
+
+          <ProductsList />
         </div>
       </div>
     </div>
