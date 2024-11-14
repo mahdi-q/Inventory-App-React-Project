@@ -2,7 +2,7 @@ function SortBar({ categories }) {
   return (
     <div className="flex items-center justify-between mb-4">
       <span className="text-slate-300">Sort</span>
-      
+
       <div className="flex items-center gap-x-4">
         <select className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1">
           <option className="bg-slate-600 text-slate-300" value="">
@@ -20,12 +20,11 @@ function SortBar({ categories }) {
           ))}
         </select>
 
-        <select className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1">
-          <option
-            className="bg-slate-600 text-slate-300"
-            selected
-            value="newest"
-          >
+        <select
+          defaultValue="newest"
+          className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1"
+        >
+          <option className="bg-slate-600 text-slate-300" value="newest">
             newest
           </option>
           <option className="bg-slate-600 text-slate-300" value="oldest">
