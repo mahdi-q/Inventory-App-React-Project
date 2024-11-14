@@ -19,7 +19,7 @@ function App() {
 
           <ProductForm categories={categories} />
 
-          <ProductsList />
+          <ProductsList categories={categories} />
         </div>
       </div>
     </div>
