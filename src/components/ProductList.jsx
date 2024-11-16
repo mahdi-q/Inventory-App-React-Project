@@ -1,6 +1,12 @@
-function ProductList({ product, category }) {
+function ProductList({ product, setProducts, category }) {
+  const handleDeleteProduct = () => {
+    setProducts((prevState) =>
+      prevState.filter((item) => item.id !== product.id)
+    );
+  };
+
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between min-w-[350px] pb-3">
       <span className="text-slate-300">{product.title}</span>
 
       <div className="flex flex-row items-center justify-center gap-x-2">
@@ -20,7 +26,10 @@ function ProductList({ product, category }) {
           edit
         </button>
 
-        <button className="flex items-center justify-center text-red-400 text-sm border border-red-400 rounded-2xl px-2 h-7">
+        <button
+          onClick={handleDeleteProduct}
+          className="flex items-center justify-center text-red-400 text-sm border border-red-400 rounded-2xl px-2 h-7"
+        >
           delete
         </button>
       </div>

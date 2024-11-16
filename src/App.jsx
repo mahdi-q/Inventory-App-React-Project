@@ -20,7 +20,11 @@ function App() {
 
           <ProductForm categories={categories} setProducts={setProducts} />
 
-          <ProductsList categories={categories} products={products} />
+          <ProductsList
+            categories={categories}
+            products={products}
+            setProducts={setProducts}
+          />
         </div>
       </div>
     </div>
