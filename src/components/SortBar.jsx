@@ -1,10 +1,20 @@
-function SortBar({ categories }) {
+function SortBar({
+  categories,
+  sortDate,
+  sortCategory,
+  onSortDate,
+  onSortCategory,
+}) {
   return (
     <div className="flex items-center justify-between mb-4">
       <span className="text-slate-300">Sort</span>
 
       <div className="flex items-center gap-x-4">
-        <select className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1">
+        <select
+          value={sortCategory}
+          onChange={onSortCategory}
+          className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1"
+        >
           <option className="bg-slate-600 text-slate-300" value="">
             All
           </option>
@@ -21,14 +31,15 @@ function SortBar({ categories }) {
         </select>
 
         <select
-          defaultValue="newest"
+          value={sortDate}
+          onChange={onSortDate}
           className="bg-transparent border border-slate-500 text-slate-400 rounded-xl py-1"
         >
-          <option className="bg-slate-600 text-slate-300" value="newest">
-            newest
+          <option className="bg-slate-600 text-slate-300" value="latest">
+            Latest
           </option>
-          <option className="bg-slate-600 text-slate-300" value="oldest">
-            oldest
+          <option className="bg-slate-600 text-slate-300" value="earliest">
+            Earliest
           </option>
         </select>
       </div>
