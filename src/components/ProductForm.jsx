@@ -79,6 +79,7 @@ function ProductForm({ categories, setProducts }) {
             categories={categories}
             productFormData={productFormData}
             setProductFormData={setProductFormData}
+            edit
           />
 
           <div className="flex items-center justify-between gap-x-4">

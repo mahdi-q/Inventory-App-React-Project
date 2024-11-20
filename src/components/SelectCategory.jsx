@@ -2,7 +2,12 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineChevronDown } from "react-icons/hi";
 
-function SelectCategory({ categories, productFormData, setProductFormData }) {
+function SelectCategory({
+  categories,
+  productFormData,
+  setProductFormData,
+  edit,
+}) {
   const [isShown, setIsShown] = useState(false);
 
   const changeCategoryHandler = (e, category) => {
@@ -56,7 +61,7 @@ function SelectCategory({ categories, productFormData, setProductFormData }) {
               className="text-white px-4 py-1 hover:bg-blue-600 flex items-center justify-between"
             >
               <span>{category.title}</span>
-              <button>
+              <button className={edit || "hidden"}>
                 <FaEdit className="w-4 h-4 text-green-500" />
               </button>
             </div>
