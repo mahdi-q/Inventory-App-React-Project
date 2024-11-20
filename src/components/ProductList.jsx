@@ -1,4 +1,12 @@
-function ProductList({ product, setProducts, category }) {
+import { useState } from "react";
+import Modal from "../ui/Modal";
+import EditProduct from "./EditProduct";
+
+function ProductList({ product, products, setProducts, categories }) {
+  const [editOpen, SetEditOpen] = useState(false);
+
+  const category = categories.find((c) => c.id === product.category).title;
+
   const handleDeleteProduct = () => {
     setProducts((prevState) =>
       prevState.filter((item) => item.id !== product.id)
@@ -22,9 +30,25 @@ function ProductList({ product, setProducts, category }) {
           {product.quantity}
         </span>
 
-        <button className="flex items-center justify-center text-green-400 text-sm border border-green-400 rounded-2xl px-2 h-7">
+        <button
+          onClick={() => SetEditOpen(true)}
+          className="flex items-center justify-center text-green-400 text-sm border border-green-400 rounded-2xl px-2 h-7"
+        >
           edit
         </button>
+        <Modal
+          title="Edit Product"
+          open={editOpen}
+          onClose={() => SetEditOpen(false)}
+        >
+          <EditProduct
+            SetEditOpen={SetEditOpen}
+            categories={categories}
+            product={product}
+            products={products}
+            setProducts={setProducts}
+          />
+        </Modal>
 
         <button
           onClick={handleDeleteProduct}

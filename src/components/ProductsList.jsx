@@ -74,8 +74,9 @@ function ProductsList({ categories, products, setProducts }) {
           <ProductList
             key={product.id}
             product={product}
+            products={products}
             setProducts={setProducts}
-            category={categories.find((c) => c.id === product.category).title}
+            categories={categories}
           />
         ))}
       </div>
