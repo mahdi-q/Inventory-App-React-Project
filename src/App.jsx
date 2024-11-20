@@ -1,12 +1,12 @@
-import { useState } from "react";
 import CategoryForm from "./components/CategoryForm";
 import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
 import ProductsList from "./components/ProductsList";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useLocalStorage("products", []);
+  const [categories, setCategories] = useLocalStorage("categories", []);
 
   return (
     <div className="bg-slate-800 max-h-fit min-h-screen">
