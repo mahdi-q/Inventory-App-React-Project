@@ -3,7 +3,7 @@ import SelectCategory from "./SelectCategory";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
-function ProductForm({ categories, setProducts }) {
+function ProductForm({ categories, setCategories, setProducts }) {
   const [isShown, setIsShown] = useState(false);
   const [productFormData, setProductFormData] = useState({
     title: "",
@@ -77,6 +77,7 @@ function ProductForm({ categories, setProducts }) {
 
           <SelectCategory
             categories={categories}
+            setCategories={setCategories}
             productFormData={productFormData}
             setProductFormData={setProductFormData}
             edit

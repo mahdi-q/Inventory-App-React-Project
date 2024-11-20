@@ -18,7 +18,11 @@ function App() {
         <div className="container max-w-lg mx-auto relative">
           <CategoryForm setCategories={setCategories} />
 
-          <ProductForm categories={categories} setProducts={setProducts} />
+          <ProductForm
+            categories={categories}
+            setCategories={setCategories}
+            setProducts={setProducts}
+          />
 
           <ProductsList
             categories={categories}

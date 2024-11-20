@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineChevronDown } from "react-icons/hi";
+import Modal from "../ui/Modal";
+import EditCategory from "./EditCategory";
 
 function SelectCategory({
   categories,
+  setCategories,
   productFormData,
   setProductFormData,
   edit,
 }) {
   const [isShown, setIsShown] = useState(false);
+  const [editOpen, SetEditOpen] = useState(false);
 
   const changeCategoryHandler = (e, category) => {
     e.preventDefault();
@@ -61,12 +65,31 @@ function SelectCategory({
               className="text-white px-4 py-1 hover:bg-blue-600 flex items-center justify-between"
             >
               <span>{category.title}</span>
-              <button className={edit || "hidden"}>
+
+              <button
+                onClick={() => SetEditOpen(true)}
+                className={edit ? "" : "hidden"}
+              >
                 <FaEdit className="w-4 h-4 text-green-500" />
               </button>
             </div>
           ))}
         </div>
+
+        <Modal
+          title="Edit Category"
+          open={editOpen}
+          onClose={() => SetEditOpen(false)}
+        >
+          <EditCategory
+            category={categories.find(
+              (item) => item.id === productFormData.category
+            )}
+            categories={categories}
+            setCategories={setCategories}
+            SetEditOpen={SetEditOpen}
+          />
+        </Modal>
       </div>
     </div>
   );
