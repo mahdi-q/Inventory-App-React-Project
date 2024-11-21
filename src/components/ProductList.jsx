@@ -2,11 +2,14 @@ import { useState } from "react";
 import Modal from "../ui/Modal";
 import EditProduct from "./EditProduct";
 import { useCategories } from "../contexts/CategoriesContext";
+import { useProducts } from "../contexts/ProductsContext";
 
-function ProductList({ product, products, setProducts }) {
+function ProductList({ product }) {
   const [editOpen, SetEditOpen] = useState(false);
 
   const { categories } = useCategories();
+
+  const { setProducts } = useProducts();
 
   const category = categories.find((c) => c.id === product.category).title;
 
@@ -47,8 +50,6 @@ function ProductList({ product, products, setProducts }) {
           <EditProduct
             SetEditOpen={SetEditOpen}
             product={product}
-            products={products}
-            setProducts={setProducts}
           />
         </Modal>
 

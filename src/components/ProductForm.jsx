@@ -2,14 +2,17 @@ import { useState } from "react";
 import SelectCategory from "./SelectCategory";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import { useProducts } from "../contexts/ProductsContext";
 
-function ProductForm({ setProducts }) {
+function ProductForm() {
   const [isShown, setIsShown] = useState(false);
   const [productFormData, setProductFormData] = useState({
     title: "",
     quantity: 0,
     category: "",
   });
+
+  const { setProducts } = useProducts();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;

@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import ProductList from "./ProductList";
 import SearchBar from "./SearchBar";
 import SortBar from "./SortBar";
+import { useProducts } from "../contexts/ProductsContext";
 
-function ProductsList({ products, setProducts }) {
+function ProductsList() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [sortDateValue, setSortDateValue] = useState("latest");
   const [sortCategoryValue, setSortCategoryValue] = useState("");
+
+  const { products } = useProducts();
 
   useEffect(() => {
     let result = products;
@@ -70,12 +73,7 @@ function ProductsList({ products, setProducts }) {
       {/* products list*/}
       <div className="flex flex-col overflow-x-auto ">
         {filteredProducts.map((product) => (
-          <ProductList
-            key={product.id}
-            product={product}
-            products={products}
-            setProducts={setProducts}
-          />
+          <ProductList key={product.id} product={product} />
         ))}
       </div>
     </div>

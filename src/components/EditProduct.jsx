@@ -2,13 +2,16 @@ import { useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import SelectCategory from "./SelectCategory";
+import { useProducts } from "../contexts/ProductsContext";
 
-function EditProduct({ SetEditOpen, product, products, setProducts }) {
+function EditProduct({ SetEditOpen, product }) {
   const [editProductFormData, setEditProductFormData] = useState({
     title: product.title,
     quantity: product.quantity,
     category: product.category,
   });
+
+  const { products, setProducts } = useProducts();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
