@@ -20,19 +20,19 @@ function ProductList({ product }) {
   };
 
   return (
-    <div className="flex flex-row items-center justify-between min-w-[350px] pb-3">
-      <span className="text-slate-300">{product.title}</span>
+    <div className="flex flex-row items-center justify-between min-w-[350px] pb-3 gap-x-6">
+      <span className="text-slate-300 whitespace-nowrap">{product.title}</span>
 
-      <div className="flex flex-row items-center justify-center gap-x-2">
+      <div className="flex  flex-row items-center gap-x-2">
         <span className="text-slate-300 text-sm">
           {new Date(product.createdAt).toLocaleDateString()}
         </span>
 
-        <span className="flex items-center justify-center text-slate-300 text-sm border border-slate-400 rounded-2xl px-3 h-7">
+        <span className="flex items-center justify-center text-slate-300 text-sm border border-slate-400 rounded-2xl px-3 h-7 whitespace-nowrap">
           {category}
         </span>
 
-        <span className="flex items-center justify-center text-slate-300 text-sm border border-slate-400 rounded-full w-7 h-7">
+        <span className="flex items-center justify-center text-slate-300 text-sm border border-slate-400 rounded-full min-w-7 px-2 h-7 whitespace-nowrap">
           {product.quantity}
         </span>
 
@@ -47,10 +47,7 @@ function ProductList({ product }) {
           open={editOpen}
           onClose={() => SetEditOpen(false)}
         >
-          <EditProduct
-            SetEditOpen={SetEditOpen}
-            product={product}
-          />
+          <EditProduct SetEditOpen={SetEditOpen} product={product} />
         </Modal>
 
         <button
