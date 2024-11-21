@@ -3,16 +3,13 @@ import { FaEdit } from "react-icons/fa";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import Modal from "../ui/Modal";
 import EditCategory from "./EditCategory";
+import { useCategories } from "../contexts/CategoriesContext";
 
-function SelectCategory({
-  categories,
-  setCategories,
-  productFormData,
-  setProductFormData,
-  edit,
-}) {
+function SelectCategory({ productFormData, setProductFormData, edit }) {
   const [isShown, setIsShown] = useState(false);
   const [editOpen, SetEditOpen] = useState(false);
+
+  const { categories } = useCategories();
 
   const changeCategoryHandler = (e, category) => {
     e.preventDefault();
@@ -85,8 +82,6 @@ function SelectCategory({
             category={categories.find(
               (item) => item.id === productFormData.category
             )}
-            categories={categories}
-            setCategories={setCategories}
             SetEditOpen={SetEditOpen}
           />
         </Modal>

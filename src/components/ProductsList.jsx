@@ -3,7 +3,7 @@ import ProductList from "./ProductList";
 import SearchBar from "./SearchBar";
 import SortBar from "./SortBar";
 
-function ProductsList({ categories, products, setProducts }) {
+function ProductsList({ products, setProducts }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [sortDateValue, setSortDateValue] = useState("latest");
@@ -61,7 +61,6 @@ function ProductsList({ categories, products, setProducts }) {
 
       {/* sort bar*/}
       <SortBar
-        categories={categories}
         sortDateValue={sortDateValue}
         sortCategoryValue={sortCategoryValue}
         onSortDate={handleSortDate}
@@ -76,7 +75,6 @@ function ProductsList({ categories, products, setProducts }) {
             product={product}
             products={products}
             setProducts={setProducts}
-            categories={categories}
           />
         ))}
       </div>

@@ -3,13 +3,7 @@ import Button from "../ui/Button";
 import Input from "../ui/Input";
 import SelectCategory from "./SelectCategory";
 
-function EditProduct({
-  SetEditOpen,
-  categories,
-  product,
-  products,
-  setProducts,
-}) {
+function EditProduct({ SetEditOpen, product, products, setProducts }) {
   const [editProductFormData, setEditProductFormData] = useState({
     title: product.title,
     quantity: product.quantity,
@@ -63,7 +57,6 @@ function EditProduct({
       />
 
       <SelectCategory
-        categories={categories}
         productFormData={editProductFormData}
         setProductFormData={setEditProductFormData}
       />

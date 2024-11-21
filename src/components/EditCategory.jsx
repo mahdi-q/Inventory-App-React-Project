@@ -1,12 +1,15 @@
 import { useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import { useCategories } from "../contexts/CategoriesContext";
 
-function EditCategory({ category, categories, setCategories, SetEditOpen }) {
+function EditCategory({ category, SetEditOpen }) {
   const [editCategoryFormData, setEditCategoryFormData] = useState({
     title: category.title,
     description: category.description,
   });
+
+  const { categories, setCategories } = useCategories();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;

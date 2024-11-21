@@ -1,13 +1,16 @@
 import { useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import { useCategories } from "../contexts/CategoriesContext";
 
-function CategoryForm({ setCategories }) {
+function CategoryForm() {
   const [isShown, setIsShown] = useState(false);
   const [categoryFormData, setCategoryFormData] = useState({
     title: "",
     description: "",
   });
+
+  const { setCategories } = useCategories();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;

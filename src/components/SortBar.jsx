@@ -1,10 +1,8 @@
-function SortBar({
-  categories,
-  sortDate,
-  sortCategory,
-  onSortDate,
-  onSortCategory,
-}) {
+import { useCategories } from "../contexts/CategoriesContext";
+
+function SortBar({ sortDate, sortCategory, onSortDate, onSortCategory }) {
+  const { categories } = useCategories();
+
   return (
     <div className="flex items-center justify-between mb-4">
       <span className="text-slate-300">Sort</span>
