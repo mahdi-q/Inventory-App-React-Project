@@ -5,7 +5,6 @@ import Input from "../ui/Input";
 import { useProducts } from "../contexts/ProductsContext";
 
 function ProductForm() {
-  const [isShown, setIsShown] = useState(false);
   const [productFormData, setProductFormData] = useState({
     title: "",
     quantity: 0,
@@ -22,7 +21,6 @@ function ProductForm() {
 
   const cancelHandler = (e) => {
     e.preventDefault();
-    setIsShown(false);
     setProductFormData({
       title: "",
       quantity: 0,
@@ -49,13 +47,7 @@ function ProductForm() {
 
   return (
     <div className="mb-6">
-      <Button
-        onClick={() => setIsShown(true)}
-        style={`${isShown && "hidden"} btn--text`}
-        text="Add New Product ?"
-      />
-
-      <div className={`${isShown || "hidden"}`}>
+      <div>
         <h2 className="text-slate-300 font-bold text-xl mb-3">
           Add New Product
         </h2>
